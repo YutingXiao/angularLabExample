@@ -7,6 +7,7 @@ var mainApp = angular.module("mainApp", []);
         $scope.pages = [
             {text: "Home", link: '/'},
             {text: "About", link: '/about'},
+            {text: "GPA Calculator", link: '/GPACalc'},
             {text: "Kittens", link: '/kittens'},
             {text: "404 Page", link: '/wefwrtbertbeb'}
         ];
