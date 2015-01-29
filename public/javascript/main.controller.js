@@ -48,4 +48,42 @@ var mainApp = angular.module("mainApp", []);
        $scope.itemsInList = function(){
            return $scope.data.length;
        };
+
+        /*$scope.addCourse = funtion()
+        {
+            $scope.list = [];
+            $scope.text = 'hello';
+            $scope.submit = function () {
+                if ($scope.text) {
+                    $scope.list.push(this.text);
+                    $scope.text = '';
+                }
+            };
+        };*/
+
     });
+//======================GPA Ctrl============
+mainApp.controller('GPACtrl', function($scope) {
+    console.log("controller loaded!");
+
+    $scope.courseField = "";
+    $scope.CourseData = [
+        {text: ""},
+    ];
+    $scope.addCOurse = function(){
+        if($scope.courseField.length >= 1) {
+            $scope.CourseData.push({text: $scope.courseField});
+            $scope.courseField = "";
+        }
+    };
+    //$scope.addCourse = funtion(){
+    //    $scope.list = [];
+    //    $scope.text = 'hello';
+    //    $scope.addCourse = function () {
+    //        if ($scope.text) {
+    //            $scope.list.push(this.text);
+    //            $scope.text = '';
+    //        }
+    //    };
+    //};
+});
