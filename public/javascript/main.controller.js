@@ -49,41 +49,68 @@ var mainApp = angular.module("mainApp", []);
            return $scope.data.length;
        };
 
-        /*$scope.addCourse = funtion()
-        {
-            $scope.list = [];
-            $scope.text = 'hello';
-            $scope.submit = function () {
-                if ($scope.text) {
-                    $scope.list.push(this.text);
-                    $scope.text = '';
-                }
-            };
-        };*/
-
     });
 //======================GPA Ctrl============
 mainApp.controller('GPACtrl', function($scope) {
     console.log("controller loaded!");
 
     $scope.courseField = "";
-    $scope.CourseData = [
-        {text: ""}
+    $scope.courseData = [
+        {text: "Current Courses"}
     ];
-    $scope.addCOurse = function(){
+
+    $scope.numberField = "";
+    $scope.numberData = [
+        {text: "Current Credits"}
+    ];
+
+    $scope.letterField = "";
+    $scope.letterData = [
+        {text: "Current Letter Grade"}
+    ];
+
+    $scope.addCourse = function(){
         if($scope.courseField.length >= 1) {
-            $scope.CourseData.push({text: $scope.courseField});
+            $scope.courseData.push({text: $scope.courseField});
             $scope.courseField = "";
         }
     };
-    //$scope.addCourse = funtion(){
-    //    $scope.list = [];
-    //    $scope.text = 'hello';
-    //    $scope.addCourse = function () {
-    //        if ($scope.text) {
-    //            $scope.list.push(this.text);
-    //            $scope.text = '';
-    //        }
-    //    };
-    //};
+
+    $scope.coursesInList = function(){
+        return $scope.courseData.length;
+    };
+
+    $scope.removeCourseData = function(index){
+        $scope.courseData.splice(index, 1);
+    };
+
+    $scope.addNumber = function(){
+        if($scope.numberField.length >= 1) {
+            $scope.numberData.push({text: $scope.numberField});
+            $scope.numberField = "";
+        }
+    };
+
+    $scope.numberInList = function(){
+        return $scope.numberData.length;
+    };
+
+    $scope.removeNumberData = function(index){
+        $scope.numberData.splice(index, 1);
+    };
+
+    $scope.addLetter = function(){
+        if($scope.letterField.length >= 1) {
+            $scope.letterData.push({text: $scope.letterField});
+            $scope.letterField = "";
+        }
+    };
+
+    $scope.letterInList = function(){
+        return $scope.letterData.length;
+    };
+
+    $scope.removeLetterData = function(index){
+        $scope.letterData.splice(index, 1);
+    };
 });

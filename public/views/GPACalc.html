@@ -12,15 +12,29 @@
     <script type="text/javascript" src="angularjs/angular.js"></script>
     <script type="text/javascript" src="javascript/main.controller.js"></script>
 </head>
-<body ng-app="mainApp">
+<body ng-app="mainApp" ng-controller="GPACtrl">
     <div ng-include="'views/navbar.html'"></div>
 
-    <form ng-submit="addCourse()" ng-controller="GPACtrl">
-        Enter text and hit enter:
-        <input type="text" ng-model="text" name="text" />
-        <input type="submit" id="submit" value="Submit" />
-        <pre>list={{addCourse}}</pre>
-    </form>
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item">
+
+                <form ng-submit="addCourse() + addNumber() + addLetter()">
+                    <input ng-model="courseField" type="text" size="50" placeholder="add the new course to the list!">
+                    <input ng-model="letterField" type="text" size="50" placeholder="add the letter grade to the list!">
+                    <input ng-model="numberField" type="text" size="50" placeholder="add the number of credits to the list!">
+
+                    <input type="submit" value="submit" class="btn btn-primary">
+                    <span class="floatRight">Items in this list: {{coursesInList()}}</span>
+
+                </form>
+
+            </li>
+            <li class="list-group-item" ng-repeat="test in courseData">{{test.text}}<span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeCourseData($index)"></span>
+            <li class="list-group-item" ng-repeat="test in letterData">{{test.text}}<span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeLetterData($index)"></span>
+            <li class="list-group-item" ng-repeat="test in numberData">{{test.text}}<span class="glyphicon glyphicon-trash floatRight" style="color: red" ng-click="removeNumberData($index)"></span></li>
+        </ul>
+    </div>
 
 
 </body>
