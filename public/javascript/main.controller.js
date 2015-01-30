@@ -113,4 +113,34 @@ mainApp.controller('GPACtrl', function($scope) {
     $scope.removeLetterData = function(index){
         $scope.letterData.splice(index, 1);
     };
+
+
+    $scope.GPAcalc = function(numberData,letterData){
+        for (i = 1; i < numberData.length; i++) {
+            var bottom = Number(numberData[i].text) + bottom;
+            var top = top + Number(numberData[i].text) * ChangeToNumber(letterData[i].text);
+        }
+        return top/bottom;
+    }
+
+    $scope.ChangeToNumber = function(str){
+        switch(str) {
+            case A:
+            var result = 4.0
+            break;
+            case B:
+                var result = 3.0
+                break;
+            case C:
+                var result = 2.0
+                break;
+            case D:
+                var result = 1.0
+                break;
+            case F:
+                var result = 0.0
+                break;
+        }
+        return result;
+    }
 });
