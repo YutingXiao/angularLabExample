@@ -68,7 +68,7 @@ mainApp.controller('GPACtrl', function($scope) {
 
     $scope.courseField = "";
     $scope.CourseData = [
-        {text: ""},
+        {text: ""}
     ];
     $scope.addCOurse = function(){
         if($scope.courseField.length >= 1) {
