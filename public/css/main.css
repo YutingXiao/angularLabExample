@@ -24,6 +24,9 @@ img {
     float: right;
 }
 
+.floatLeft {
+    float: left;
+}
 .centerText {
-    display: center;
+    text-align: center;
 }

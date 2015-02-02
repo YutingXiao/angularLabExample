@@ -40,6 +40,11 @@ app.get('/about', function(req, res){
     res.sendFile('public/views/about.html', options);
 });
 
+//added the get GPA calculator page request here:
+app.get('/GPAcalc', function(req, res){
+    res.sendFile('public/views/GPAcalc.html', options);
+});
+
 app.get('/', function(req, res){
     res.sendFile('public/views/index.html', options);
 });
