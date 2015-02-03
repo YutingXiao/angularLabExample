@@ -132,9 +132,9 @@ mainApp.controller('GPACtrl', function($scope) {
         return numGrade;
     };
 
-    $scope.GPAcalc = function(ChangeToNumber(num), str){
-        letter = $scope.letterField;
-        numb = $scope.numberField;
+    $scope.GPAcalc = function(){
+        letter = $scope.letterData;
+        numb = $scope.numberData;
         for (i = 1; i < numb.length; i++) {
             $scope.GPAcalc = function (numb, letter) {
                 for (i = 1; i < numb.length; i++) {
