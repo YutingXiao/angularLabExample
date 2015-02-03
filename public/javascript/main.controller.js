@@ -59,90 +59,103 @@ mainApp.controller('GPACtrl', function($scope) {
 
     $scope.courseField = "";
     $scope.courseData = [
-        {text: "lala"}
-    ];
-
-    $scope.numberField = "";
-    $scope.numberData = [
 
     ];
-    $scope.letterField = "";});
-    $scope.letterData = [
 
-    ];
-    $scope.addCourse = function(){
-        if($scope.courseField.length >= 1) {
+    $scope.numberField = 0;
+    $scope.numberData = [];
+
+    $scope.letterField = "";
+    $scope.letterData = [];
+
+    $scope.addCourse = function () {
+        if ($scope.courseField.length >= 1) {
             $scope.courseData.push({text: $scope.courseField});
+            $scope.numberData.push({number: $scope.numberField});
+            $scope.letterData.push({letter: $scope.letterField});
             $scope.courseField = "";
+            $scope.numberField = 0;
+            $scope.letterField = "";
 
         }
     };
-    $scope.coursesInList = function(){
+    $scope.coursesInList = function () {
         return $scope.courseData.length;
     };
-    $scope.removeCourseData = function(index){
+    $scope.removeCourseData = function (index) {
         $scope.courseData.splice(index, 1);
+        $scope.GPAcalc();
     };
-    $scope.addNumber = function(){
-        if($scope.numberField.length >= 1) {
-            $scope.numberData.push({text: $scope.numberField});
-            $scope.numberField = "";
-            var numb = $scope.numberField;
-        }
-    };
-    $scope.numberInList = function(){
-        return $scope.numberData.length;
-    };
-    $scope.removeNumberData = function(index){
-        $scope.numberData.splice(index, 1);
-    };
-    $scope.addLetter = function(){
-        if($scope.letterField.length >= 1) {
-            $scope.letterData.push({text: $scope.letterField});
-            $scope.letterField = "";
-            var letter = $scope.letterField;
-        }
-    };
-    $scope.letterInList = function(){
-        return $scope.letterData.length;
-    };
-    $scope.removeLetterData = function(index){
-        $scope.letterData.splice(index, 1);
-    };
+    //$scope.addNumber = function () {
+    //    if ($scope.numberField.length >= 1) {
+    //        $scope.numberData.push({number: $scope.numberField});
+    //        $scope.numberField = 0;
+    //        //var numb = $scope.numberField;
+    //    }
+    //};
+    //$scope.numberInList = function () {
+    //    return $scope.numberData.length;
+    //};
+    //$scope.removeNumberData = function (index) {
+    //    $scope.numberData.splice(index, 1);
+    //};
+    //$scope.addLetter = function () {
+    //    if ($scope.letterField.length >= 1) {
+    //        $scope.letterData.push({letter: $scope.letterField});
+    //        $scope.letterField = "";
+    //        //var letter = $scope.letterField;
+    //    }
+    //};
+    //$scope.letterInList = function () {
+    //    return $scope.letterData.length;
+    //};
+    //$scope.removeLetterData = function (index) {
+    //    $scope.letterData.splice(index, 1);
+    //};
 
-    $scope.ChangeToNumber = function(str){
-        switch(str) {
-            case A:
+    $scope.ChangeToNumber = function (str) {
+        var numGrade;
+        switch (str) {
+            case 'A':
                 number = 4.0;
                 break;
-            case B:
+            case 'B':
                 number = 3.0;
                 break;
-            case C:
+            case 'C':
                 number = 2.0;
                 break;
-            case D:
+            case 'D':
                 number = 1.0;
                 break;
-            case F:
+            case 'F':
                 number = 0.0;
                 break;
         }
-        numGrade = Number(number);
+        numGrade = number;
+        console.log("NumGrade");
+        console.log(numGrade);
         return numGrade;
+
     };
 
-    $scope.GPAcalc = function(){
-        letter = $scope.letterData;
-        numb = $scope.numberData;
-        for (i = 1; i < numb.length; i++) {
-            $scope.GPAcalc = function (numb, letter) {
-                for (i = 1; i < numb.length; i++) {
-                    bottom = Number(numb[i].text) + bottom;
-                    top = top + Number(numb[i].text) * $scope.ChangeToNumber(letter[i].text);
-                    result = Number(top / bottom);
-                }
-                return result;
-            };
-        }
+    $scope.GPAcalc = function () {
+        var letter = $scope.letterData;
+        var numb = $scope.numberData;
+        console.log("~~~~~~~~~ Gpa calc stuff ~~~~");
+        console.log(letter[0]);
+        console.log(numb[0]);
+        var result;
+        var top = 0;
+        var bottom = 0;
+               for (i = 0; i < numb.length; i++) {
+                    bottom += Number(numb[i].number);
+                   console.log(numb[i].number);
+                   top = top + numb[i].number * $scope.ChangeToNumber(letter[i].letter);
+                    result = top / bottom;
+                };
+        console.log("bottom: " + bottom);
+        return result;
     };
+
+});
