@@ -14,7 +14,9 @@
 </head>
 <body ng-app="mainApp" ng-controller="GPACtrl">
     <div ng-include="'views/navbar.html'"></div>
-
+    <div>
+        <p>Please use capital letters when submitting Letter Grades.</p>
+    </div>
     <div class="container">
         <ul class="list-group">
             <li class="list-group-item">
@@ -25,7 +27,8 @@
                     <input ng-model="numberField" type="text" size="50" placeholder="add the number of credits to the list!">
 
                     <input type="submit" value="submit" class="btn btn-primary">
-                    <span class="floatRight" style="color: blue">Your GPA is: {{GPAcalc()}}</span>
+
+                    <span class="floatRight" ng-style="colorCode()">Your GPA is: {{GPAcalc()}}</span>
 
                 </form>
 

@@ -64,15 +64,38 @@ mainApp.controller('GPACtrl', function($scope) {
 
     $scope.addCourse = function () {
         if ($scope.courseField.length >= 1) {
-            $scope.courseData.push({text: $scope.courseField});
-            $scope.numberData.push({number: $scope.numberField});
-            $scope.letterData.push({letter: $scope.letterField});
-            $scope.courseField = "";
-            $scope.numberField = 0;
-            $scope.letterField = "";
-
+            if ($scope.validation() == true) {
+                $scope.courseData.push({text: $scope.courseField});
+                $scope.numberData.push({number: $scope.numberField});
+                $scope.letterData.push({letter: $scope.letterField});
+                $scope.courseField = "";
+                $scope.numberField = 0;
+                $scope.letterField = "";
+            }
+            else {
+                alert("error: try again! Please read the directions!" );
+            }
         }
     };
+
+
+
+    $scope.validation = function () {
+        var letters = ["A","B","C","D","F"];
+       if ($scope.numberField == 0) {
+           alert("error: invalid credit amount");
+           return false;
+       }
+        else if (!letters.indexOf($scope.letterField)) {
+           console.log("works here");
+           alert("error: invalid letter grade");
+           return false;
+       }
+        else {
+           return true;
+       }
+    };
+
     $scope.coursesInList = function () {
         return $scope.courseData.length;
     };
@@ -128,4 +151,18 @@ mainApp.controller('GPACtrl', function($scope) {
         return result;
     };
 
+    $scope.colorCode = function () {
+        if ($scope.GPAcalc() < 2.0) {
+           return {"color": 'red'};
+        }
+        else if ($scope.GPAcalc() >= 2.0 && $scope.GPAcalc() < 3.0) {
+           return {"color": 'blue'};
+        }
+        else if ($scope.GPAcalc() >= 3.0) {
+            return {"color": 'green'};
+        }
+        else {
+            return {"color": 'black'};
+        }
+    };
 });
