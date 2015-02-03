@@ -58,14 +58,8 @@ mainApp.controller('GPACtrl', function($scope) {
     console.log("controller loaded!");
 
     $scope.courseField = "";
-    $scope.courseData = [
-
-    ];
-
-    $scope.numberField = 0;
+    $scope.courseData = [];
     $scope.numberData = [];
-
-    $scope.letterField = "";
     $scope.letterData = [];
 
     $scope.addCourse = function () {
@@ -84,34 +78,10 @@ mainApp.controller('GPACtrl', function($scope) {
     };
     $scope.removeCourseData = function (index) {
         $scope.courseData.splice(index, 1);
+        $scope.numberData.splice(index, 1);
+        $scope.letterData.splice(index, 1);
         $scope.GPAcalc();
     };
-    //$scope.addNumber = function () {
-    //    if ($scope.numberField.length >= 1) {
-    //        $scope.numberData.push({number: $scope.numberField});
-    //        $scope.numberField = 0;
-    //        //var numb = $scope.numberField;
-    //    }
-    //};
-    //$scope.numberInList = function () {
-    //    return $scope.numberData.length;
-    //};
-    //$scope.removeNumberData = function (index) {
-    //    $scope.numberData.splice(index, 1);
-    //};
-    //$scope.addLetter = function () {
-    //    if ($scope.letterField.length >= 1) {
-    //        $scope.letterData.push({letter: $scope.letterField});
-    //        $scope.letterField = "";
-    //        //var letter = $scope.letterField;
-    //    }
-    //};
-    //$scope.letterInList = function () {
-    //    return $scope.letterData.length;
-    //};
-    //$scope.removeLetterData = function (index) {
-    //    $scope.letterData.splice(index, 1);
-    //};
 
     $scope.ChangeToNumber = function (str) {
         var numGrade;
