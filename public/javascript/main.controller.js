@@ -79,6 +79,14 @@ mainApp.controller('GPACtrl', function($scope) {
     };
 
 
+    $scope.contains = function(a,obj) {
+        for (var i =0; i < a.length; i++) {
+            if (a[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+    };
 
     $scope.validation = function () {
         var letters = ["A","B","C","D","F"];
@@ -86,7 +94,7 @@ mainApp.controller('GPACtrl', function($scope) {
            alert("error: invalid credit amount");
            return false;
        }
-        else if (!letters.indexOf($scope.letterField)) {
+        else if (!$scope.contains(letters,$scope.letterField)) {
            console.log("works here");
            alert("error: invalid letter grade");
            return false;
@@ -146,7 +154,7 @@ mainApp.controller('GPACtrl', function($scope) {
                    console.log(numb[i].number);
                    top = top + numb[i].number * $scope.ChangeToNumber(letter[i].letter);
                     result = top / bottom;
-                };
+                }
         console.log("bottom: " + bottom);
         return result;
     };
