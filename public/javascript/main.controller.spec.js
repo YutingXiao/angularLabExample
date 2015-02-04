@@ -64,3 +64,37 @@ describe('Testing controller: navbarCtrl', function(){
       expect(scope.pages.length > 0).toEqual(true);
     });
 });
+
+//======================Testing GPACtrl =================================
+
+describe('Testing controller: GPACtrl', function(){
+    // load the controller's module
+    beforeEach(module('mainApp'));
+
+    var mainCtrl, scope;
+
+    // Initialize the controller and mock scope.
+    beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        mainCtrl = $controller('GPACtrl', {
+            $scope: scope
+        });
+    }));
+
+    //test for the contain function.
+    it('Letters array should contains "A" and should not contains "Z"',function() {
+        var letters = ["A","B","C","D","F"];
+        expect($scope.contains(letters,"A")).toEqual(true);
+        expect($scope.contains(letters,"Z")).toEqual(false)
+    });
+
+
+    //test for ChangeToNumber function.
+    it ('letters should changed to corresponding numbers',function(){
+        expect($scope.ChangeToNumber("A")==4.0).toEqual(true);
+        expect($scope.ChangeToNumber("B")==4.0).toEqual(false);
+    });
+
+    //For validation, GPAcalc and coloCode functions, we tested them in the GPA Calculator html page,and they all
+    //work well.
+});
